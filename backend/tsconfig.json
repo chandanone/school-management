@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* === File Layout === */
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* === Module & Target === */
+    "module": "commonjs", // required for Node.js
+    "target": "ES2020", // ESNext can cause issues with older Node versions
+    "moduleResolution": "node",
+    "resolveJsonModule": true, // allows importing JSON
+    "esModuleInterop": true, // allows default imports from commonjs packages
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+
+    /* === Type Definitions === */
+    "types": ["node", "express"], // important for backend
+    "lib": ["ES2020"],
+
+    /* === Source Maps === */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* === Strictness === */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* === Misc === */
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
