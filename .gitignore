@@ -2,6 +2,7 @@
 /backend/node_modules/
 /frontend/node_modules/
 
+node_modules/
 # TypeScript compiled files
 /backend/dist/
 /frontend/dist/
