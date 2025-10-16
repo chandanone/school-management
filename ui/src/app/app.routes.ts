@@ -5,6 +5,7 @@ import { Dashboard1 } from './Components/dashboard1/dashboard1';
 import { Dashboard2 } from './Components/dashboard2/dashboard2';
 import { Dashboard3 } from './Components/dashboard3/dashboard3';
 import { authGuard } from './Guards/auth-guard';
+import { Register } from './Components/register/register';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
+  },
+  {
+    path: 'register',
+    component: Register,
   },
   {
     path: '',

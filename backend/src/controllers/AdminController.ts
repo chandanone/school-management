@@ -6,8 +6,8 @@ const adminService = new AdminService();
 export class AdminController {
   static async signup(req: Request, res: Response) {
     try {
-      const { username, password } = req.body;
-      const admin = await adminService.signup(username, password);
+      const { username, email, password } = req.body;
+      const admin = await adminService.signup(username, email, password);
       res.status(201).json({ message: "Admin created successfully", admin });
     } catch (err: any) {
       res.status(400).json({ error: err.message });

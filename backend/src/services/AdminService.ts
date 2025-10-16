@@ -7,18 +7,19 @@ const SECRET_KEY = process.env.SECRET_KEY!;
 if (!SECRET_KEY) throw new Error("❌ SECRET_KEY is not defined in .env");
 
 export class AdminService {
-  async signup(username: string, password: string) {
+  async signup(username: string, email: string, password: string) {
     const client = await pool.connect();
     try {
       const adminRepo = new GenericRepository<any>(client, "admins");
 
       const existing = await adminRepo.getFiltered([
         { column: "username", operator: "=", value: username },
+        { column: "email", operator: "=", value: email },
       ]);
 
       if (existing.length > 0) throw new Error("Admin already exists");
 
-      await adminRepo.insert({ username, password });
+      await adminRepo.insert({ username, email, password });
 
       return { message: "Admin created successfully" };
     } finally {
