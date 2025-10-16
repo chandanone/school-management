@@ -11,7 +11,9 @@ export const authenticateJwt = (role?: string): RequestHandler => {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       // Authorization header missing
-      return res.status(401).json({ message: "Authorization header missing" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized accesss prohibited" });
     }
     const token = authHeader.split(" ")[1];
     if (!token) {
