@@ -28,6 +28,7 @@ export class Login {
       const response = await fetch('http://localhost:5000/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // include cookie
         body: JSON.stringify(this.userObj),
       });
 
@@ -41,6 +42,8 @@ export class Login {
       localStorage.setItem('loginuser', result.username || this.userObj.username);
       localStorage.setItem('token', result.token);
 
+      // ✅ Display welcome message
+      alert(`Welcome, ${result.username}!`);
       // Redirect after login
       this.router.navigateByUrl('dashboard1');
     } catch (error: any) {

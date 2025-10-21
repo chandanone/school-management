@@ -17,7 +17,7 @@ export class AdminController {
   static async login(req: Request, res: Response) {
     try {
       const { username, password } = req.body;
-      const token = await adminService.login(username, password);
+      const token = await adminService.login(username, password, res);
       res.json({ message: "Logged in successfully", token });
     } catch (err: any) {
       res.status(403).json({ error: err.message });

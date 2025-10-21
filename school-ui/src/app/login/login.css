@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.main {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff6f61, #ffd18b, #8bc34a, #4caf50, #2196f3, #9c27b0);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  display: flex;
+  width: 900px; /* Adjust as needed */
+  height: 500px; /* Adjust as needed */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-panel::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  animation: backgroundPulse 10s infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.right-panel {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.login-form h2 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #f7931a;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  background-color: #f7931a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.btn-login:hover {
+  background-color: #e0840c;
+  transform: translateY(-2px);
+}

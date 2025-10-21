@@ -1,16 +1,16 @@
 # Node.js dependencies
 /backend/node_modules/
-/frontend/node_modules/
+/school-ui/node_modules/
 
 node_modules/
 # TypeScript compiled files
 /backend/dist/
-/frontend/dist/
-/frontend/out-tsc/
+/school-ui/dist/
+/school-ui/out-tsc/
 
 # Environment variables
 /backend/.env
-/frontend/.env
+/school-ui/.env
 
 # Logs
 *.log
@@ -29,4 +29,4 @@ Thumbs.db
 *.sublime-project
 
 # Angular build and cache
-/frontend/.angular/
+/school-ui/.angular/

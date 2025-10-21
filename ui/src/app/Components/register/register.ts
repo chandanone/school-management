@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  standalone: true, // ✅ best practice for standalone components
   imports: [FormsModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
@@ -17,14 +18,13 @@ export class Register {
     password: '',
   };
 
-  // onLogin() {
-  //   if (this.userObj.username == 'super_admin' && this.userObj.password == '12345') {
-  //     localStorage.setItem('loginuser', this.userObj.username);
-  //     this.router.navigateByUrl('dashboard1');
-  //   } else {
-  //     alert('Username and Password incorrect.');
-  //   }
   async onSignUp() {
+    // simple validation before sending request
+    if (!this.userObj.username || !this.userObj.email || !this.userObj.password) {
+      alert('All fields are required.');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:5000/api/admin/signup', {
         method: 'POST',
@@ -35,13 +35,14 @@ export class Register {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || 'Login failed');
+        throw new Error(result.message || 'Sign-up failed');
       }
 
-      // Redirect after login
-      this.router.navigateByUrl('login');
+      alert('Registration successful! Please log in.');
+      this.router.navigateByUrl('/login'); // ✅ use slash for clarity
     } catch (error: any) {
-      alert(error.message || 'Sign-Up failed. Please try again.');
+      console.error('Signup error:', error);
+      // alert(error.message || 'Sign-up failed. Please try again.');
     }
   }
 }

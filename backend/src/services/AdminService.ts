@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { pool } from "../config/db";
 import { GenericRepository } from "../repositories/GenericRepository";
 import { Course } from "../models/Course";
+import { Response } from "express";
 
 const SECRET_KEY = process.env.SECRET_KEY!;
 if (!SECRET_KEY) throw new Error("❌ SECRET_KEY is not defined in .env");
@@ -27,7 +28,7 @@ export class AdminService {
     }
   }
 
-  async login(username: string, password: string) {
+  async login(username: string, password: string, res: Response) {
     const client = await pool.connect();
     try {
       const adminRepo = new GenericRepository<any>(client, "admins");
@@ -43,7 +44,12 @@ export class AdminService {
         expiresIn: "1h",
       });
 
-      return { message: "Logged in successfully", token };
+      return {
+        message: "Logged in successfully",
+        username: admin.username,
+        role: admin.role,
+        token,
+      };
     } finally {
       client.release();
     }

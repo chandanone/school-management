@@ -45,7 +45,13 @@ export class StudentService {
         expiresIn: "1h",
       });
 
-      return { message: "Logged in successfully", token };
+      //return { message: "Logged in successfully", token };
+      return {
+        message: "Logged in successfully",
+        username: student.username,
+        role: student.role,
+        token,
+      };
     } finally {
       client.release();
     }

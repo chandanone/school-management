@@ -7,7 +7,12 @@ import studentRoutes from "./routes/studentRoutes";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:4200", // Angular app URL
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/admin", adminRoutes);
