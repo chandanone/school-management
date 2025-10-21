@@ -9,7 +9,7 @@ export interface AuthRequest extends Request {
 export const authenticateJwt = (role?: string): RequestHandler => {
   return (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
-    console.log("Auth Header:", authHeader);
+    //console.log("Auth Header:", authHeader);
     if (!authHeader) {
       // Authorization header missing
       return res
